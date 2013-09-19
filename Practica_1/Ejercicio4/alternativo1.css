@@ -1,0 +1,24 @@
+body{	
+	background-image: url("linux13.jpg");
+	font-family: arial;
+}
+
+h1, h2 {
+	color: orange;
+	font-size: 35px;
+	text-align: center;
+}
+
+h2{	
+	font-size: 16px;	
+	text-align: left;
+}
+
+.objetivo{
+	font-size: 20px;
+	color: white;
+}
+
+.ejercicio{
+	color: white;
+}

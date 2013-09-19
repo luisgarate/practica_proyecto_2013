@@ -1,0 +1,22 @@
+.objetivo{
+	background-color: pink;	
+	padding: 10px 10px 10px;
+	font-family: tahoma;
+	text-align: left;
+	width: 700px;
+	text-align: center;
+}
+.ejercicio{
+	background-color: #01DF01;
+}
+h1{
+	text-align: center;
+}
+
+h1,h2{
+	font-family: verdana;
+}
+p{
+	background-color: #9FF781;
+	font-family: tahoma;
+}
