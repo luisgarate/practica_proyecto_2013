@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+	<title>Reserva de pasajes</title>
+	<style type="text/css">
+		body{
+			font-weight: bold;
+		}
+	</style>
+	<script type="text/javascript">
+	function error{
+		alert("Datos ingresados no válidos, vuelva a intentarlo")
+	}
+	</script>
+
+
+</head>
+<body>
+<h1>Reserva de Pasajes</h1>
+<form action>
+	<fieldset>
+		Nombre: <input type="text" name="nom">
+		<br>Apellido: <input type="text" name="ape"></br>
+		Documento (Tipo): <select> 
+							<option>DNI</option>
+							<option>CI</option>
+							<option>LE</option>
+							<option>LC</option>
+						</select>
+		N&uacutemero: <input type="int" name="doc" >
+		Tel&eacutefono:<input type="int" name="tel">
+		<br>Fecha de Nacimiento:<input type="int" name="dia" size="1">/<input type="int" name="mes" size="1">/<input type="int" name="anio" size="1"></br>
+		Fecha de la reserva: <input type="int" name="dia" size="1">/<input type="int" name="mes" size="1">/<input type="int" name="anio" size="1"></br>
+		<br>Observaciones:</br>
+		<textarea name="comentarios" rows="6" cols="50"> </textarea>
+		<br><input type="submit" value="Establecer reserva">
+		<input type="reset" value="Borrar todo"></br>
+	</fieldset>
+</form>
+</body>
