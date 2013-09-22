@@ -13,7 +13,10 @@
         validar_valores_numericos();
         almacenar_valores();            
     }//de la funcion  
-
+    
+    window.onload = function() {
+        cargar_valores();
+    }
     function validar_blancos(){
         var f = document.getElementById("formulario");
         for (var i = 0; i < f.elements.length; i++) {          
@@ -67,7 +70,7 @@
         return (a < 1900 || a > 2013);
     }
 
-    (function(){
+    function cargar_valores(){
         document.getElementsByName("nombre")[0].setAttribute("value", localStorage["Nombre"]);
         document.getElementsByName("apellido")[0].setAttribute("value", localStorage["Apellido"]);
         document.getElementsByName("numero")[0].setAttribute("value", localStorage["Numero"]);
@@ -78,8 +81,8 @@
         document.getElementsByName("dia")[1].setAttribute("value", localStorage["Dia2"]);
         document.getElementsByName("mes")[1].setAttribute("value", localStorage["Mes2"]);
         document.getElementsByName("anio")[1].setAttribute("value", localStorage["Anio2"]);
-        document.getElementsByName("comentarios")[0].setAttribute("value", localStorage["Comentarios"]);
-    })();
+        document.getElementsByName("comentarios")[0].value=localStorage["Comentarios"];
+    }
     function almacenar_valores(){
         localStorage["Nombre"] = document.getElementsByName("nombre")[0].value;
         localStorage["Apellido"] = document.getElementsByName("apellido")[0].value;
