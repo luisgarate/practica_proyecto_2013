@@ -2,92 +2,90 @@
 <head>
 	<title>Reserva de pasajes</title>
 	<style type="text/css">
-		body{
+		body {
 			font-weight: bold;
 		}
 	</style>
 
-	<script type="text/javascript">
-    function validar_campos(){
-            var x= validar_blancos();
-            var y= validar_valores_numericos();           
+	<script>
+    function validar_campos() {
+        validar_blancos();
+        validar_valores_numericos();           
     }//de la funcion  
 
     function validar_blancos(){
         var f = document.getElementById("formulario");
-        for (i=0;i<f.elements.length;i++)
-        {          
-            elem=f.elements[i];         
-              if (elem.value == "")
-              {
-                alert ("No puedes dejar el campo " +elem.name+ " vacio");
+        for (var i = 0; i < f.elements.length; i++) {          
+            elem = f.elements[i];         
+            if (!elem.value) {
+                alert("No puedes dejar el campo " + elem.name + " vacio");
                 elem.focus();
                 break;
-              }            
+            }            
         }
     }
-    function validar_valores_numericos(){
+
+    function validar_valores_numericos() {
         var f = document.getElementById("formulario");
-        for (i=0;i<f.elements.length;i++)
-        {            
-            elem=f.elements[i];
-            if (elem.id=="n") { // los que tienen id = "n" son campos numericos
+        for (var i = 0; i < f.elements.length; i++) {            
+            elem = f.elements[i];
+            if (elem.id === "n") { // los que tienen id = "n" son campos numericos
                 if (isNaN(elem.value)) {
-                    alert("Ingresaste un valor NO numerico en el campo " +elem.name)
-                    elem.focus()
+                    alert("Ingresaste un valor NO numerico en el campo " +elem.name);
+                    elem.focus();
                     break;
                 }
-                if (elem.name=="dia") {
+                if (elem.name === "dia") {
                     if (dia_invalido(elem.value)) {
-                        alert("DIA ingresado NO valido")
+                        alert("DIA ingresado NO valido");
                     };
                 };
-                if (elem.name=="mes") {
+                if (elem.name === "mes") {
                     if (mes_invalido(elem.value)) {
-                        alert("MES ingresado NO valido")
+                        alert("MES ingresado NO valido");
                     };
-
                 };
-                if (elem.name=="anio") {
+                if (elem.name === "anio") {
                     if (anio_invalido(elem.value)) {
-                        alert("ANIO ingresado NO valido")
+                        alert("ANIO ingresado NO valido");
                     };
                 };    
             }//del if es campo numerico
         }
     }
-    function dia_invalido(d){
-        return (d<1 || d>31)
+
+    function dia_invalido(d) {
+        return (d < 1 || d > 31);
     }
-    function mes_invalido(m){
-        return(m<1 || m>12)
+
+    function mes_invalido(m) {
+        return (m < 1 || m > 12);
     }
-    function anio_invalido(a){
-        return(a<1900 || a>2013)
+
+    function anio_invalido(a) {
+        return (a < 1900 || a > 2013);
     }
 	</script>
-
 </head>
 <body>
 <h1>Reserva de Pasajes</h1>
 <form method="post" action="" id="formulario">
 	<fieldset>
-		Nombre: <input type="text" name="nombre">
-		<br>Apellido: <input type="text" name="apellido"></br>
+		Nombre: <input type="text" name="nombre"><br>
+		Apellido: <input type="text" name="apellido"><br>
 		Documento (Tipo): <select> 
 							<option>DNI</option>
 							<option>CI</option>
 							<option>LE</option>
 							<option>LC</option>
 						  </select>		
-        N&uacutemero: <input type="text" name="numero" value id="n">
-		Tel&eacutefono:<input type="text" name="telefono" value id="n">
-		<br>Fecha de Nacimiento:<input type="text" name="dia" size="1" id="n">/<input type="text" name="mes" size="1" id="n">/<input type="text" name="anio" size="1" id="n"></br>
-		Fecha de la reserva: <input type="text" name="dia" size="1" id="n">/<input type="text" name="mes" size="1" id="n">/<input type="text" name="anio" size="1" id="n"></br>
-		<br>Observaciones:</br>
-		<textarea name="comentarios" rows="6" cols="50"> </textarea>
-		<br><input type="submit" value="Establecer reserva" onclick="javascript:validar_campos()">
-		<input type="reset" value="Borrar todo"></br>
+        N&uacute;mero: <input type="text" name="numero" value id="n">
+		Tel&eacute;fono:<input type="text" name="telefono" value id="n"><br>Fecha de Nacimiento:<input type="text" name="dia" size="1" id="n">/<input type="text" name="mes" size="1" id="n">/<input type="text" name="anio" size="1" id="n">
+		Fecha de la reserva: <input type="text" name="dia" size="1" id="n">/<input type="text" name="mes" size="1" id="n">/<input type="text" name="anio" size="1" id="n"><br>
+        Observaciones:<br>
+		<textarea name="comentarios" rows="6" cols="50"> </textarea><br>
+		<input type="submit" value="Establecer reserva" onclick="javascript:validar_campos()">
+		<input type="reset" value="Borrar todo">
 	</fieldset>
 </form>
 </body>
