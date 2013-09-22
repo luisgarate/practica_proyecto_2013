@@ -10,7 +10,8 @@
 	<script>
     function validar_campos() {
         validar_blancos();
-        validar_valores_numericos();           
+        validar_valores_numericos();
+        almacenar_valores();            
     }//de la funcion  
 
     function validar_blancos(){
@@ -65,7 +66,36 @@
     function anio_invalido(a) {
         return (a < 1900 || a > 2013);
     }
+
+    function cargar_datos(){
+        document.getElementsByClassName("nombre").value=localStorage["Nombre"];
+        document.getElementsByClassName("apellido").value=localStorage["Apellido"];
+        document.getElementsByClassName("numero").value=localStorage["Numero"];
+        document.getElementsByClassName("telefono").value=localStorage["Telefono"];
+        document.getElementsByClassName("dia").value=localStorage["Dia"];
+        document.getElementsByClassName("mes").value=localStorage["Mes"];
+        document.getElementsByClassName("anio").value=localStorage["Anio"];
+        document.getElementsByName("dia")[1].value().value=localStorage["Dia2"];
+        document.getElementsByName("mes")[1].value().value=localStorage["Mes2"];
+        document.getElementsByName("anio")[1].value().value=localStorage["Anio2"];
+        document.getElementsByClassName("comentarios").value=localStorage["Comentarios"];
+    }
+    
+    function almacenar_valores(){
+        localStorage["Nombre"] = document.getElementsByClassName("nombre");
+        localStorage["Apellido"] = document.getElementsByClassName("apellido");
+        localStorage["Numero"] = document.getElementsByClassName("numero");
+        localStorage["Telefono"] = document.getElementsByClassName("telefono");
+        localStorage["Dia"] = document.getElementsByClassName("dia");
+        localStorage["Mes"] = document.getElementsByClassName("mes");
+        localStorage["Anio"] = document.getElementsByClassName("anio");
+        localStorage["Dia2"] = document.getElementsByName("dia")[1].value();
+        localStorage["Mes2"] = document.getElementsByName("mes")[1].value();
+        localStorage["Anio2"] = document.getElementsByName("anio")[1].value();
+        localStorage["Comentarios"] = document.getElementsByClassName("comentarios");
+    }
 	</script>
+
 </head>
 <body>
 <h1>Reserva de Pasajes</h1>
