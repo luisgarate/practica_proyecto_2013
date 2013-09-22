@@ -68,30 +68,30 @@
     }
 
   function cargar_datos(){
-        document.getElementsByName("nombre").value=localStorage["Nombre"];
-        document.getElementsByName("apellido").value=localStorage["Apellido"];
-        document.getElementsByName("numero").value=localStorage["Numero"];
-        document.getElementsByName("telefono").value=localStorage["Telefono"];
+        document.getElementsByName("nombre")[0].value=localStorage["Nombre"];
+        document.getElementsByName("apellido")[0].value=localStorage["Apellido"];
+        document.getElementsByName("numero")[0].value=localStorage["Numero"];
+        document.getElementsByName("telefono")[0].value=localStorage["Telefono"];
         document.getElementsByName("dia")[0].value=localStorage["Dia"];
         document.getElementsByName("mes")[0].value=localStorage["Mes"];
         document.getElementsByName("anio")[0].value=localStorage["Anio"];
         document.getElementsByName("dia")[1].value=localStorage["Dia2"];
         document.getElementsByName("mes")[1].value=localStorage["Mes2"];
         document.getElementsByName("anio")[1].value=localStorage["Anio2"];
-        document.getElementsByName("comentarios").value=localStorage["Comentarios"];
+        document.getElementsByName("comentarios")[0].value=localStorage["Comentarios"];
     }
     function almacenar_valores(){
-        localStorage["Nombre"] = document.getElementsByName("nombre").value;
-        localStorage["Apellido"] = document.getElementsByName("apellido").value;
-        localStorage["Numero"] = document.getElementsByName("numero").value;
-        localStorage["Telefono"] = document.getElementsByName("telefono").value;
+        localStorage["Nombre"] = document.getElementsByName("nombre")[0].value;
+        localStorage["Apellido"] = document.getElementsByName("apellido")[0].value;
+        localStorage["Numero"] = document.getElementsByName("numero")[0].value;
+        localStorage["Telefono"] = document.getElementsByName("telefono")[0].value;
         localStorage["Dia"] = document.getElementsByName("dia")[0].value;
         localStorage["Mes"] = document.getElementsByName("mes")[0].value;
         localStorage["Anio"] = document.getElementsByName("anio")[0].value;
         localStorage["Dia2"] = document.getElementsByName("dia")[1].value;
         localStorage["Mes2"] = document.getElementsByName("mes")[1].value;
         localStorage["Anio2"] = document.getElementsByName("anio")[1].value;
-        localStorage["Comentarios"] = document.getElementsByName("comentarios").value;
+        localStorage["Comentarios"] = document.getElementsByName("comentarios")[0].value;
     }
 	</script>
 
