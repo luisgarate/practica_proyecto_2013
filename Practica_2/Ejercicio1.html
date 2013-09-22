@@ -80,7 +80,7 @@
         document.getElementsByName("anio")[1].value().value=localStorage["Anio2"];
         document.getElementsByClassName("comentarios").value=localStorage["Comentarios"];
     }
-    
+
     function almacenar_valores(){
         localStorage["Nombre"] = document.getElementsByClassName("nombre");
         localStorage["Apellido"] = document.getElementsByClassName("apellido");
@@ -98,6 +98,7 @@
 
 </head>
 <body>
+<div onload="cargar_datos()"></div>
 <h1>Reserva de Pasajes</h1>
 <form method="post" action="" id="formulario">
 	<fieldset>
