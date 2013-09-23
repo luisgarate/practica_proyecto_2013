@@ -21,7 +21,7 @@
         var f = document.getElementById("formulario");
         for (var i = 0; i < f.elements.length; i++) {          
             elem = f.elements[i];         
-            if (!elem.value) {
+            if (elem.value == "") {
                 alert("No puedes dejar el campo " + elem.name + " vacio");
                 elem.focus();
                 break;
