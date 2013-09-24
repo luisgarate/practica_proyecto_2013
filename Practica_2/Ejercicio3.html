@@ -2,25 +2,60 @@
 <html>
 <head>
 	<script>
+
+	function campos_no_validos() {
+			
+			var nombre = document.getElementById("nombre").value;
+			var apellido = document.getElementById("apellido").value;
+	
+			if (nombre=="" || apellido=="")
+				{
+					alert("No dejar campos en blanco");
+					return true;
+				};
+
+			if(document.getElementById("nombre").value.match(/[0-9]/))
+				{
+					alert('Ingresar solo texto');
+					document.getElementById("nombre").focus();
+					return true;
+				}
+			else{
+				if(document.getElementById("apellido").value.match(/[0-9]/))
+				{
+					alert('Ingresar solo texto');
+					document.getElementById("apellido").focus();
+					return true;
+				}
+			}	
+	}
+
 	window.onload = function() {
-		document.getElementById("agregarItem").onclick = function() {
+			document.getElementById("agregarItem").onclick = function() {	
 			var lista = document.getElementById("lista");
-			var item = document.createElement("li");
+			var item = document.createElement("li");			
+			
 			item.onclick = function() {
 				lista.removeChild(this);
 			}
-			item.innerHTML = document.getElementById("nombre").value + " " + document.getElementById("apellido").value;
-			lista.appendChild(item);
+
+			if (!campos_no_validos()) {
+				item.innerHTML = document.getElementById("nombre").value + " " + document.getElementById("apellido").value;
+				lista.appendChild(item);
+			};			
 		}	
 	}
 	</script>
 </head>
 <body>
-<form name="test-form" method="POST">
-	Nombre: <input id="nombre" type="text"><br>
-	Apellido: <input id="apellido" type="text">
-	<input type="button" id="agregarItem" value="Agregar a la lista">
-</form>
-<ol id="lista"></ol>
+
+	<h1><center>Lista de nombres</center></h1>
+	<form name="test-form" method="POST">
+		Nombre: <input id="nombre" type="text"><br>
+		Apellido: <input id="apellido" type="text">
+		<input type="button" id="agregarItem" value="Agregar a la lista">
+	</form>
+	<ol id="lista"></ol>
+
 </body>
 </html>
