@@ -2,6 +2,24 @@
 <html>
 <head>
 	<script>
+	
+	window.onload = function() {
+
+		document.getElementById("agregarItem").onclick = function() {			
+
+			if (!campos_no_validos()) {
+				var lista = document.getElementById("lista");
+				var item = document.createElement("li");
+				item.innerHTML = document.getElementById("nombre").value + " " + document.getElementById("apellido").value;
+				lista.appendChild(item);
+
+				item.onclick = function() {
+						lista.removeChild(this);
+				};
+			};
+				
+		};	
+	};
 
 	function campos_no_validos() {
 			
@@ -29,33 +47,19 @@
 				}
 			}	
 	}
-
-	window.onload = function() {
-			document.getElementById("agregarItem").onclick = function() {	
-			var lista = document.getElementById("lista");
-			var item = document.createElement("li");			
-			
-			item.onclick = function() {
-				lista.removeChild(this);
-			}
-
-			if (!campos_no_validos()) {
-				item.innerHTML = document.getElementById("nombre").value + " " + document.getElementById("apellido").value;
-				lista.appendChild(item);
-			};			
-		}	
-	}
 	</script>
 </head>
 <body>
-
 	<h1><center>Lista de nombres</center></h1>
 	<form name="test-form" method="POST">
+
 		Nombre: <input id="nombre" type="text"><br>
+
 		Apellido: <input id="apellido" type="text">
+
 		<input type="button" id="agregarItem" value="Agregar a la lista">
+		
 	</form>
 	<ol id="lista"></ol>
-
 </body>
 </html>
