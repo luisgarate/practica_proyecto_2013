@@ -9,12 +9,28 @@
       var lista = document.getElementById('lista');
       var item = document.createElement('li');
       item.innerHTML = document.getElementById('nombre').value + ' ' + document.getElementById('apellido').value;
-      lista.appendChild(item);
+      insertarOrdenado(lista, item);
 
       item.onclick = function() {
-        lista.removeChild(this);
+        var result = confirm('Desea eliminar el elemento?');
+        if (result) lista.removeChild(this);
       }
     }   
+  }
+
+  function insertarOrdenado(lista, item) {
+    var newItemText = item.innerText;
+    for(var i = 0; i < lista.childNodes.length; i++) {
+      var currentItem = lista.childNodes[i];
+      var currentItemText = currentItem.innerText;
+      if (newItemText.localeCompare(currentItemText) === -1) {
+        lista.insertBefore(item, currentItem);
+        return;
+      }
+    }
+
+    //La lista esta vacia o inserto al final
+    lista.appendChild(item);
   }
 
   function camposValidos() {      
