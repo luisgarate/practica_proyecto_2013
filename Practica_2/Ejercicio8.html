@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <title>Geolocalizacion</title>
+  <script>
+  
+  function getCoordinates() {
+    if (navigator.geolocation);
+    {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    }
+
+  }
+
+  function showPosition(x){
+      alert('Latitude: ' + x.coords.latitude + 'Longitude:' + x.coords.longitude);
+  }
+
+  window.onload = function() {
+      getCoordinates();
+  }
+  </script>
+</head>
+
+<body>
+</body>
