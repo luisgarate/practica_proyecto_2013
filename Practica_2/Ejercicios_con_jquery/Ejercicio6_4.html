@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="jquery-1.10.2.js"></script>
+  <script>  
+  $(function() {
+    $('#agregarItem').click(function() {     
+      if (!camposValidos()) return;
+        
+      var $lista = $('#lista');
+      var $nombre = $('#nombre');
+      var $apellido = $('#apellido');
+      var $newItem = $('<li>');
+      $newItem.text($nombre.val() + ' ' + $apellido.val());
+      insertarOrdenado($lista, $newItem);
+
+      $nombre.val('');
+      $apellido.val('');
+
+      $nombre.focus();
+
+      $newItem.click(function() {
+        var result = confirm('Desea eliminar el elemento?');
+        if (result) $(this).fadeOut(1000, removeElement);
+      });
+    });   
+  });
+
+  function removeElement() {
+    this.remove();
+  }
+
+  function insertarOrdenado($lista, $item) {
+    
+    //Posicion donde se va insertar el item
+    var index = -1;
+
+    $lista.children().each(function (i) {
+      if ($item.text().localeCompare(this.innerText) === -1) {
+        index = i;
+        return false;
+      }
+    });
+
+    //Si la lista esta vacia o se va a agregar al final hago el append, sino inserto
+    if (index === -1)
+      $item.hide().appendTo($lista).fadeIn(1000);
+    else
+      $item.hide().insertBefore($lista.children()[index]).fadeIn(1000);
+  }
+
+  function camposValidos() {      
+    var nombre = $('#nombre')[0];
+    var apellido = $('#apellido')[0];
+  
+    if (!validarCampoVacio(nombre)) return false;
+
+    if (!validarCampoVacio(apellido)) return false;
+
+    if (!validarCampoAlfanumerico(nombre)) return false;
+
+    if (!validarCampoAlfanumerico(apellido)) return false;
+
+    return true;
+  }
+
+  function validarCampoVacio(elemento) {
+    if (!elemento.value) {
+      alert('No dejar campos en blanco');
+      elemento.focus();
+      return false;
+    }
+    return true;
+  }
+
+  function validarCampoAlfanumerico(elemento) {
+    if (elemento.value.match(/[0-9]/)) {
+      alert('Ingresar solo texto');
+      elemento.focus();
+      return false;
+    }
+    return true;
+  }
+  </script>
+</head>
+<body>
+  <h1>Lista de nombres</h1>
+  <form name="test-form" method="POST">
+    Nombre: <input id="nombre" type="text"><br>
+    Apellido: <input id="apellido" type="text">
+    <input type="button" id="agregarItem" value="Agregar a la lista">
+  </form>
+  <ol id="lista"></ol>
+</body>
+</html>
