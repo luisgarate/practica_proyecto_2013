@@ -1,130 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script 
-		src="jquery-1.10.2.js">
-	</script>
-	<title>CAdESoL</title>
-	<script>
-		window.onload = function() {
+  <script src="jquery-1.10.2.js"></script>
+  <title>CAdESoL</title>
+  <script>
+  $(function() {
+    $('#pdiv').click(function() {  //intercambia los p por div
+      $('p').replaceWith(function() { 
+        return '<div>' + $(this).text() + '</div>'; 
+      })   
+    });
+    
+    $('#deshabilita').click(function() { //Deshabilita botones y hace invisibles los input
+      $('input[name=boton]').attr('disabled', 'disabled');
+      $('input').fadeTo('slow', 0.33);
+    });
 
-			document.getElementById("pdiv").onclick = function() {	//intercambia los p por div
-				var todosLosP = document.getElementsByTagName('p');
-				for (var i = 0; i < todosLosP.length; i++) {					
-					var primerParrafo = todosLosP[i];
-					$(todosLosP[i]).replaceWith('<div>' + primerParrafo.innerHTML + '</div>');
-				}				
-			}
-			
-			document.getElementById("deshabilita").onclick = function() {	//Deshabilita botones y hace invisibles los input
-				var botones = document.getElementsByName("boton");				
-				for (var i = 0; i < botones.length; i++) {
-					botones[i].disabled = true;
-				};
-				$("input").fadeTo("slow", 0.33);
-			}	
+    $('#eliminar_h1').click(function() { //Elimina todos los h1
+      $('h1').remove();      
+    });
 
-			document.getElementById("eliminar_h1").onclick = function() {	//Elimina todos los h1
-				var todosH1 = document.getElementById("h1");
-				todosH1.remove();				
-			}
+    $('#cambia_color').click(function() {  //cambia el color de fondo
+       $('#body').css('background-color', '#BCF5A9');
+    });
 
-			document.getElementById("cambia_color").onclick = function() {	//cambia el color de fondo
-				 $('#body').css('background-color', '#BCF5A9');
-			}
+    $('#recorrer').click(function() {  //lista la cantidad de elementos 
+      cantidadItemsLista();
+      cantidadParrafos();
+      cantidadDiv();
+      cantidadCabeceras();       
+    });
+  });
 
-			document.getElementById("recorrer").onclick = function() {	//lista la cantidad de elementos 
-				cantidad_items_lista();
-				cantidad_p();
-				cantidad_div();
-				cantidad_h();				
-			}
-		}
+  function cantidadParrafos() {     
+    $('#lista_elementos').append('<li>La cantidad de parrafos es ' + $('p').length + '</li>');
+  }
 
-		function cantidad_p() {			
-			var lista = $('#lista_elementos');
-  			lista.append('<li>La cantidad de parrafos es ' + $("p").length+ '</li>');
-		}
+  function cantidadDiv() {
+    $('#lista_elementos').append('<li>La cantidad de div es ' + $('div').length + '</li>');      
+  }
 
-		function cantidad_div() {
-  			var lista = $('#lista_elementos');
-  			lista.append('<li>La cantidad de div es ' + $("div").length+ '</li>');			
-		}
+  function cantidadCabeceras() {
+    $('#lista_elementos').append('<li>La cantidad de h1 es ' + $('h1').length + '</li>')    
+                         .append('<li>La cantidad de h2 es ' + $('h2').length + '</li>');
+  }
 
-		function cantidad_h() {
-			var lista = $('#lista_elementos');
-  			lista.append('<li>La cantidad de h1 es ' + $("h1").length+ '</li>');		
-  			lista.append('<li>La cantidad de h2 es ' + $("h2").length+ '</li>');
-		}
-
-		function cantidad_items_lista() {
-			var lista = $('#lista_elementos');
-  			lista.append('<li>La cantidad de li es ' + $("li").length+ '</li>');  			
-		}
-
-	</script>
+  function cantidadItemsLista() {
+    $('#lista_elementos').append('<li>La cantidad de li es ' + $('li').length + '</li>');        
+  }
+  </script>
 </head>
 
 <body id = "body">
-	<h1 name = "h1" id = "h1"><center>C&aacute;mara Argentina de Empresas de Software Libre (CAdESoL)</center></h1>
-	<p name = "p">Las actividades de CAdESoL se focalizan en impulsar el desarrollo de negocios en Software Libre y Open Source por medio de acciones colectivas: proyectos, investigaci&oacute;n, promoci&oacute;n, y desarrollo.
-		En CAdESoL incentivamos a las empresas de todos los rubros y tama&ntilde;os a implementar soluciones utilizando Software Libre.
-	</p>
-	
-	<div name = "div">
-	<h2 name = "h2">Nuestros Objetivos:</h2>
-	<ul name = "lista">
-		<li name = "elem">Apoyar y fomentar el desarrollo e implementaci&oacute;n de software libre, colaborando para ello con entidades p&uacute;blicas y privadas.</li>
-		<li name = "elem">Asesorar a las empresas asociadas sobre los distintos aspectos de su gesti&oacute;n y fomentar la cooperación entre ellas.</li>
-		<li name = "elem">Actuar en defensa de los leg&iacute;timos intereses de sus asociados.</li>
-		<li name = "elem">Propender a la vinculaci&oacute;n con las orgaciones cient&iacute;fico-t&eacute;cnicas, educativas y productivas, sirviendo de v&iacute;nculo e intermediario &uacute;til para la difusi&oacute;n del software libre.</li>
-		<li name = "elem">Promover, apoyar y realizar estudios tendientes al mejoramiento de los procesos de desarrollo, soporte e implementaci&oacute;n de software basado en c&oacute;digo libre.</li>
-	</ul>
-	</div>
+  <h1 name = "h1" id = "h1"><center>C&aacute;mara Argentina de Empresas de Software Libre (CAdESoL)</center></h1>
+  <p name = "p">Las actividades de CAdESoL se focalizan en impulsar el desarrollo de negocios en Software Libre y Open Source por medio de acciones colectivas: proyectos, investigaci&oacute;n, promoci&oacute;n, y desarrollo.
+    En CAdESoL incentivamos a las empresas de todos los rubros y tama&ntilde;os a implementar soluciones utilizando Software Libre.
+  </p>
+  
+  <div name = "div">
+  <h2 name = "h2">Nuestros Objetivos:</h2>
+  <ul name = "lista">
+    <li name = "elem">Apoyar y fomentar el desarrollo e implementaci&oacute;n de software libre, colaborando para ello con entidades p&uacute;blicas y privadas.</li>
+    <li name = "elem">Asesorar a las empresas asociadas sobre los distintos aspectos de su gesti&oacute;n y fomentar la cooperación entre ellas.</li>
+    <li name = "elem">Actuar en defensa de los leg&iacute;timos intereses de sus asociados.</li>
+    <li name = "elem">Propender a la vinculaci&oacute;n con las orgaciones cient&iacute;fico-t&eacute;cnicas, educativas y productivas, sirviendo de v&iacute;nculo e intermediario &uacute;til para la difusi&oacute;n del software libre.</li>
+    <li name = "elem">Promover, apoyar y realizar estudios tendientes al mejoramiento de los procesos de desarrollo, soporte e implementaci&oacute;n de software basado en c&oacute;digo libre.</li>
+  </ul>
+  </div>
 
-	<div name = "div">
-	<h2 name = "h2">Qu&eacute; es el software libre??</h2>
-	<p name = "p">
-	El software libre es la denominaci&oacute;n del software que, una vez obtenido, puede ser usado, copiado, estudiado, modificado y redistribuido libremente ya que los usuarios cuentan con el c&oacute;digo fuente. El c&oacute;digo fuente de un programa son las instrucciones que debe seguir la computadora para poder ejecutarlo.		
-	</p>
-	</div>
+  <div name = "div">
+  <h2 name = "h2">Qu&eacute; es el software libre??</h2>
+  <p name = "p">
+  El software libre es la denominaci&oacute;n del software que, una vez obtenido, puede ser usado, copiado, estudiado, modificado y redistribuido libremente ya que los usuarios cuentan con el c&oacute;digo fuente. El c&oacute;digo fuente de un programa son las instrucciones que debe seguir la computadora para poder ejecutarlo.    
+  </p>
+  </div>
 
-	<h2 name = "h2">Contacto</h2>
-	<p name = "p">		
-		V&iacute;as de contacto con CADESOL
-		<br>Tel&eacute;fono: +54-11-5275-9091<br>
-		Ramirez de Velasco 508, Piso 1 "A"
-		<br>Ciudad Aut&oacute;noma de Buenos Aires (1414)</br>
-		email: info@cadesol.org.arv
-		<br>twitter: @cadesol</br>
-	</p>
+  <h2 name = "h2">Contacto</h2>
+  <p name = "p">    
+    V&iacute;as de contacto con CADESOL
+    <br>Tel&eacute;fono: +54-11-5275-9091<br>
+    Ramirez de Velasco 508, Piso 1 "A"
+    <br>Ciudad Aut&oacute;noma de Buenos Aires (1414)</br>
+    email: info@cadesol.org.arv
+    <br>twitter: @cadesol</br>
+  </p>
 
-	<form id = "formu" name = "formu" action = "">
-		Nombre: <input id="nombre" type="text"><br>
-		
-		Apellido: <input id="apellido" type="text"><br>
-		
-		Tel&eacute;fono: <input id="telefono" type="text"><br>
-		
-		Direcci&oacute;n de email: <input id="email" type="text" value = "@"><br>		
-		
-		<textarea rows="6" cols="50">Su mensaje...</textarea><br>
-		
-		<input type = "submit" value = "Enviar" id = "enviar" name = "boton"><br>
+  <form id = "formu" name = "formu" action = "">
+    Nombre: <input id="nombre" type="text"><br>
+    
+    Apellido: <input id="apellido" type="text"><br>
+    
+    Tel&eacute;fono: <input id="telefono" type="text"><br>
+    
+    Direcci&oacute;n de email: <input id="email" type="text" value = "@"><br>   
+    
+    <textarea rows="6" cols="50">Su mensaje...</textarea><br>
+    
+    <input type = "submit" value = "Enviar" id = "enviar" name = "boton"><br>
 
-		<input type = "button" value = "Listar elementos" id = "recorrer" name = "boton">
+    <input type = "button" value = "Listar elementos" id = "recorrer" name = "boton">
 
-		<input type = "button" value = "Eliminar h1" id = "eliminar_h1" name = "boton">
+    <input type = "button" value = "Eliminar h1" id = "eliminar_h1" name = "boton">
 
-		<input type = "button" value = "Cambiar color de fondo" id = "cambia_color" name = "boton">
+    <input type = "button" value = "Cambiar color de fondo" id = "cambia_color" name = "boton">
 
-		<input type = "button" value = "Deshabilitar botones" id = "deshabilita" name = "boton">
+    <input type = "button" value = "Deshabilitar botones" id = "deshabilita" name = "boton">
 
-		<input type = "button" value = "<p> por <div>" id = "pdiv" name = "boton">
+    <input type = "button" value = "<p> por <div>" id = "pdiv" name = "boton">
 
-	</form>
+  </form>
 
-	<ul id = "lista_elementos"></ul>
+  <ul id = "lista_elementos"></ul>
 
 </body>
 </html>
